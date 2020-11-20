@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'dart:async';
 
-import 'package:flutter/services.dart';
 import 'package:flutter_plugin_amap/flutter_plugin_amap.dart';
+
 
 void main() {
   runApp(MyApp());
@@ -20,7 +19,6 @@ class _MyAppState extends State<MyApp> {
   }
 
   AmapController _amapController;
-  AmapController _amapController1;
 
   @override
   Widget build(BuildContext context) {
@@ -44,35 +42,37 @@ class _MyAppState extends State<MyApp> {
                 MyButton(
                   text: "定位当前位置",
                   onTap: () {
-                    _amapController1.setMyLocationEnabled();
+                    _amapController.showMyLocation();
+                  },
+                ),
+                MyButton(
+                  text: "切换地图模式",
+                  onTap: () {
+                    _amapController.setMapType(MapType.BUS);
+                  },
+                ),
+                MyButton(
+                  text: "驾车路线",
+                  onTap: () {
+                    _amapController.drivingRoute();
                   },
                 ),
               ],
             ),
+            Container(
+              decoration:
+              BoxDecoration(border: Border.all(color: Colors.red)),
+              height: 300,
+              child: AmapView(
+                mapCreatedCallback: (AmapController controller) {
+                  _amapController = controller;
+                },
+              ),
+            ),
             Expanded(
               child: ListView(
                 children: <Widget>[
-                  Container(
-                    decoration:
-                        BoxDecoration(border: Border.all(color: Colors.red)),
-                    height: 300,
-                    child: AmapView(
-                      mapCreatedCallback: (AmapController controller) {
-                        _amapController = controller;
-                        _amapController.setMyLocationEnabled();
-                      },
-                    ),
-                  ),
-                  Container(
-                    decoration:
-                        BoxDecoration(border: Border.all(color: Colors.red)),
-                    height: 100,
-                    child: AmapView(
-                      mapCreatedCallback: (AmapController controller) {
-                        _amapController1 = controller;
-                      },
-                    ),
-                  ),
+
                 ],
               ),
             ),

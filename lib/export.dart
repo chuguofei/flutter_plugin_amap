@@ -10,9 +10,8 @@ import 'package:flutter/material.dart';
  */
 
 export "./widegt/amap_view.dart";
+export './widegt/amap_common.dart';
 export './impl/amap_controller.dart';
-export './impl/amap_method_channel.dart';
-
 
 
 export './ui/my_button.dart';

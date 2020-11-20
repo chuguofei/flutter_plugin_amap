@@ -37,7 +37,6 @@ class AmapView extends StatelessWidget {
 
   Future<void> onPlatformViewCreated(int id) async {
     debugPrint("地图id是【$id】");
-    MethodCallChannel.setChannel(id);
     final AmapController amapController = await AmapController.init(id);
     if (this.mapCreatedCallback != null) {
       this.mapCreatedCallback(amapController);
