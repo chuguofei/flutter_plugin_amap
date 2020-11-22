@@ -5,6 +5,9 @@ import android.content.Context;
 
 import androidx.lifecycle.Lifecycle;
 
+import com.google.gson.Gson;
+import com.lczp.flutter_plugin_amap.model.UnifiedMapOptions;
+
 import io.flutter.plugin.common.BinaryMessenger;
 import io.flutter.plugin.common.StandardMessageCodec;
 import io.flutter.plugin.platform.PlatformView;
@@ -30,7 +33,9 @@ class AmapFactory extends PlatformViewFactory {
 
     @Override
     public PlatformView create(final Context context, int viewId, Object args) {
-        final AmapController amapController = new AmapController(messenger, activity, context, viewId);
+        Gson g = new Gson();
+        UnifiedMapOptions unifiedMapOptions = g.fromJson(args.toString(), UnifiedMapOptions.class);
+        final AmapController amapController = new AmapController(messenger, activity, context, viewId, unifiedMapOptions);
         if (lifecycle != null) {
             lifecycle.addObserver(amapController);
         }

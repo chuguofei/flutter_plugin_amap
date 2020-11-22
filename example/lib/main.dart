@@ -64,6 +64,7 @@ class _MyAppState extends State<MyApp> {
               BoxDecoration(border: Border.all(color: Colors.red)),
               height: 300,
               child: AmapView(
+                mapType:MapType.NAVI,
                 mapCreatedCallback: (AmapController controller) {
                   _amapController = controller;
                 },

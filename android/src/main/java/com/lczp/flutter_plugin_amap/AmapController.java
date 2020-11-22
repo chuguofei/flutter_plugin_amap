@@ -12,6 +12,7 @@ import androidx.lifecycle.DefaultLifecycleObserver;
 import androidx.lifecycle.LifecycleOwner;
 
 import com.amap.api.maps.AMap;
+import com.amap.api.maps.AMapOptions;
 import com.amap.api.maps.MapView;
 import com.amap.api.maps.model.MyLocationStyle;
 import com.amap.api.services.core.LatLonPoint;
@@ -21,6 +22,7 @@ import com.amap.api.services.route.DriveRouteResult;
 import com.amap.api.services.route.RideRouteResult;
 import com.amap.api.services.route.RouteSearch;
 import com.amap.api.services.route.WalkRouteResult;
+import com.lczp.flutter_plugin_amap.model.UnifiedMapOptions;
 import com.lczp.flutter_plugin_amap.overlay.DrivingRouteOverlay;
 
 import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding;
@@ -48,12 +50,12 @@ public class AmapController
     private final MethodChannel methodChannel;
     private boolean disposed = false;
 
-    public AmapController(BinaryMessenger messenger, Activity activity, Context context, int id) {
+    public AmapController(BinaryMessenger messenger, Activity activity, Context context, int id, UnifiedMapOptions unifiedMapOptions) {
         methodChannel = new MethodChannel(messenger, "com.lczp.amap/plugin_" + id);
         methodChannel.setMethodCallHandler(this);
         this.messenger = messenger;
         this.activity = activity;
-        mapView = new MapView(context);
+        mapView = new MapView(context,unifiedMapOptions.toAMapOptions());
         aMap = mapView.getMap();
     }
 
