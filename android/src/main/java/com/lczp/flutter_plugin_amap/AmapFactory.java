@@ -1,8 +1,10 @@
 package com.lczp.flutter_plugin_amap;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 
+import androidx.core.app.ActivityCompat;
 import androidx.lifecycle.Lifecycle;
 
 import com.google.gson.Gson;
@@ -29,10 +31,14 @@ class AmapFactory extends PlatformViewFactory {
         this.messenger = messenger;
         this.activity = activity;
         this.lifecycle = lifecycle;
+
     }
 
     @Override
     public PlatformView create(final Context context, int viewId, Object args) {
+
+
+
         Gson g = new Gson();
         UnifiedMapOptions unifiedMapOptions = g.fromJson(args.toString(), UnifiedMapOptions.class);
         final AmapController amapController = new AmapController(messenger, activity, context, viewId, unifiedMapOptions);

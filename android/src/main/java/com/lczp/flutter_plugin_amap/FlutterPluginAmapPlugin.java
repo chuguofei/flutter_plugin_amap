@@ -1,7 +1,10 @@
 package com.lczp.flutter_plugin_amap;
 
 
+import android.Manifest;
+
 import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
 import androidx.lifecycle.DefaultLifecycleObserver;
 import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.LifecycleOwner;
@@ -10,6 +13,7 @@ import io.flutter.embedding.engine.plugins.FlutterPlugin;
 import io.flutter.embedding.engine.plugins.activity.ActivityAware;
 import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding;
 import io.flutter.embedding.engine.plugins.lifecycle.HiddenLifecycleReference;
+import io.flutter.plugin.common.EventChannel;
 import io.flutter.plugin.common.MethodChannel;
 import io.flutter.plugin.common.PluginRegistry.Registrar;
 
@@ -19,6 +23,9 @@ import io.flutter.plugin.common.PluginRegistry.Registrar;
 public class FlutterPluginAmapPlugin implements FlutterPlugin, ActivityAware, DefaultLifecycleObserver {
 
     private MethodChannel channel;
+    private EventChannel eventChannel;
+
+
     private FlutterPluginBinding pluginBinding;
     private Lifecycle lifecycle;
 
@@ -31,11 +38,13 @@ public class FlutterPluginAmapPlugin implements FlutterPlugin, ActivityAware, De
     @Override
     public void onAttachedToEngine(@NonNull FlutterPluginBinding flutterPluginBinding) {
         pluginBinding = flutterPluginBinding;
-
         // 注册methodCallHandle
-        channel = new MethodChannel(flutterPluginBinding.getFlutterEngine().getDartExecutor(), "com.lczp.amap_nav/plugin");
-        MethodCallHandleImpl methodCallHandle = new MethodCallHandleImpl(flutterPluginBinding.getApplicationContext());
+        channel = new MethodChannel(pluginBinding.getFlutterEngine().getDartExecutor(), "com.lczp.amap_nav/plugin");
+        eventChannel = new EventChannel(pluginBinding.getFlutterEngine().getDartExecutor(), "com.lczp.amap_fromAndroid");
+
+        MethodCallHandleImpl methodCallHandle = new MethodCallHandleImpl(pluginBinding.getApplicationContext());
         channel.setMethodCallHandler(methodCallHandle);
+        eventChannel.setStreamHandler(methodCallHandle);
     }
 
     /**
@@ -66,6 +75,10 @@ public class FlutterPluginAmapPlugin implements FlutterPlugin, ActivityAware, De
      */
     @Override
     public void onAttachedToActivity(@NonNull ActivityPluginBinding binding) {
+
+
+
+
         HiddenLifecycleReference reference = (HiddenLifecycleReference) binding.getLifecycle();
         lifecycle = reference.getLifecycle();
         lifecycle.addObserver(this);
