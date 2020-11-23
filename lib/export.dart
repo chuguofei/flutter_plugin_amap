@@ -14,3 +14,5 @@ export './impl/amap_controller.dart';
 
 
 export './ui/my_button.dart';
+export './ui/base_dialog.dart';
+export './ui/dialog_utils.dart';

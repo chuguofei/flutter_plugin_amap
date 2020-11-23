@@ -13,18 +13,66 @@ class FlutterPluginAmap {
     return result;
   }
 
-  // 开启猎鹰服务
-  static Future get amapTrackStart async {
-    await amap_nav_channel.invokeMethod("amap#trackStart");
+  /**
+   * 开启猎鹰服务
+   * terminalName -> 终端注册名称
+   * TrackId -> 轨迹id
+   */
+  static Future amapTrackStart(String terminalName, String trackId) async {
+    Map params = {
+      "serviceId": 217813,
+      "terminalName": terminalName,
+      "TrackId": trackId,
+    };
+    await amap_nav_channel.invokeMethod("amap#track#start", params);
   }
 
   // 停止猎鹰服务
   static Future get amapTrackStop async {
-    await amap_nav_channel.invokeMethod("amap#trackStop");
+    await amap_nav_channel.invokeMethod("amap#track#stop");
   }
 
   // 获取终端行驶里程
   static Future get amapTrackQueryDistance async {
     await amap_nav_channel.invokeMethod("amap#trackQueryDistance");
+  }
+
+  // 停止猎鹰服务
+  static Future Toast(String str) async {
+    await amap_nav_channel.invokeMethod("Toast", str);
+  }
+
+  // 绑定终端
+  static Future<String> amapTrackAdd(String terminal) async {
+    Map params = {
+      "key": "b09d2f642a0e006ddc87b16b14fcc85d",
+      "sid": 217813,
+      "name": terminal
+    };
+    String result = await amap_nav_channel.invokeMethod("amap#track#add", params);
+    return result;
+  }
+
+  // 查询终端
+  static Future get amapTrackList async {
+    Map params = {
+      "key": "b09d2f642a0e006ddc87b16b14fcc85d",
+      "sid": 217813,
+    };
+    await amap_nav_channel.invokeMethod("amap#track#list", params);
+  }
+
+  /**
+   * 创建轨迹
+   *
+   * 一个终端可创建50万条轨迹
+   */
+  static Future<String> amapTraceAdd(String tid) async {
+    Map params = {
+      "key": "b09d2f642a0e006ddc87b16b14fcc85d",
+      "sid": 217813,
+      "tid": tid,
+    };
+    return await amap_nav_channel.invokeMethod("amap#trace#add", params);
   }
 }

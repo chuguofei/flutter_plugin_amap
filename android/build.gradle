@@ -36,12 +36,14 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+//    implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'com.google.code.gson:gson:2.8.6'
     implementation "com.amap.api:navi-3dmap:latest.integration"
 //    implementation 'com.amap.api:location:latest.integration'
     implementation 'com.amap.api:search:latest.integration'
     implementation fileTree(dir: 'src/main/java/libs', include: ['*.aar', '*.jar'], exclude: [])
+
+    implementation 'com.zhousf.lib:okhttp3:2.9.9'
 }
 

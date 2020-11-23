@@ -1,4 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.lczp.flutter_plugin_amap">
 
     <!--允许程序打开网络套接字-->
@@ -24,7 +25,7 @@
     <uses-permission android:name="android.permission.BLUETOOTH"></uses-permission>
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"></uses-permission>
 
-    <application>
+    <application >
         <!-- 高德导航activity -->
         <!--<activity
             android:name="com.amap.api.navi.AmapRouteActivity"
@@ -33,16 +34,16 @@
             android:theme="@android:style/Theme.NoTitleBar" />-->
         <activity
             android:name="com.amap.api.navi.AmapRouteActivity"
-            android:theme="@android:style/Theme.NoTitleBar"
+            android:configChanges="orientation|keyboardHidden|screenSize|navigation"
             android:launchMode="singleInstance"
-            android:configChanges="orientation|keyboardHidden|screenSize|navigation" />
+            android:theme="@android:style/Theme.NoTitleBar" />
         <!-- 高德离线下载activity -->
         <activity
             android:name="com.amap.api.maps.offlinemap.OfflineMapActivity"
             android:screenOrientation="portrait" />
 
         <!--高德地图配置-->
-        <service android:name="com.amap.api.track.AMapTrackService"/>
-        <service android:name="com.amap.api.location.APSService"/>
+        <service android:name="com.amap.api.track.AMapTrackService" />
+        <service android:name="com.amap.api.location.APSService" />
     </application>
 </manifest>
