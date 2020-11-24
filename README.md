@@ -1,8 +1,5 @@
-# flutter_plugin_amap
+# flutter_plugin_amap (高德地图插件)
 
-高德地图插件
 
-## Getting Started
-
-![avatar](./image/app.jpg)
+ <img src="./image/app.jpg " height="350"/>
 
