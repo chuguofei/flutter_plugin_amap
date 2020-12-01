@@ -2,15 +2,18 @@
  * @author: YiuHai
  * @description: 一些描述
  * @Date: 2020-11-20 08:44:07
- * @LastEditTime: 2020-12-01 16:37:33
+ * @LastEditTime: 2020-12-01 16:39:45
 -->
 # flutter_plugin_amap (高德地图插件)
 
 ```yaml
-//support
- flutter_plugin_amap:
-   git:
-     url: git@github.com:chuguofei/flutter_plugin_amap.git
+
+
+
+flutter_plugin_amap:
+  git:
+    url: https://github.com/chuguofei/flutter_plugin_amap.git
+    ref: main
 ```
 
 
