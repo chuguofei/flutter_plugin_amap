@@ -1,8 +1,14 @@
+<!--
+ * @author: YiuHai
+ * @description: 一些描述
+ * @Date: 2020-11-20 08:44:07
+ * @LastEditTime: 2020-12-01 16:33:32
+-->
 # flutter_plugin_amap (高德地图插件)
 
 
  <img src="./image/ui.jpg " height="350"/>
-
+ <img src="./image/pc_track.jpg " height="350"/>
 
 ## 地图操作
 * 定位当前位置

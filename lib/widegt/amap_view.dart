@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_plugin_amap/export.dart';
@@ -89,12 +90,19 @@ class _AmapViewState extends State<AmapView> {
       "options": _amapParams.toMap(),
     };
 
-    return AndroidView(
-      viewType: viewType,
-      creationParams: _amapParams.toMap(),
-      onPlatformViewCreated: onPlatformViewCreated,
-      creationParamsCodec: const StandardMessageCodec(),
-    );
+    return defaultTargetPlatform == TargetPlatform.android
+        ? AndroidView(
+            viewType: viewType,
+            creationParams: _amapParams.toMap(),
+            onPlatformViewCreated: onPlatformViewCreated,
+            creationParamsCodec: const StandardMessageCodec(),
+          )
+        : UiKitView(
+            viewType: viewType,
+            creationParams: _amapParams.toMap(),
+            onPlatformViewCreated: onPlatformViewCreated,
+            creationParamsCodec: const StandardMessageCodec(),
+          );
   }
 
   Future<void> onPlatformViewCreated(int id) async {
