@@ -2,9 +2,13 @@
  * @author: YiuHai
  * @description: 一些描述
  * @Date: 2020-11-20 08:44:07
- * @LastEditTime: 2020-12-01 16:34:58
+ * @LastEditTime: 2020-12-01 16:36:33
 -->
 # flutter_plugin_amap (高德地图插件)
+
+#  flutter_plugin_amap:
+#    git:
+#      url: git@github.com:chuguofei/flutter_plugin_amap.git
 
 
 ｜ - <img src="./image/ui.jpg " height="350"/>   - <img src="./image/pc_track.jpg " height="350"/>
