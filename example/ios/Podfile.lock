@@ -1,11 +1,20 @@
 PODS:
+  - AMapFoundation-NO-IDFA (1.6.4)
+  - AMapNavi-NO-IDFA (7.6.0):
+    - AMapFoundation-NO-IDFA (~> 1.6.4)
   - Flutter (1.0.0)
   - flutter_plugin_amap (0.0.1):
+    - AMapNavi-NO-IDFA
     - Flutter
 
 DEPENDENCIES:
   - Flutter (from `Flutter`)
   - flutter_plugin_amap (from `.symlinks/plugins/flutter_plugin_amap/ios`)
+
+SPEC REPOS:
+  trunk:
+    - AMapFoundation-NO-IDFA
+    - AMapNavi-NO-IDFA
 
 EXTERNAL SOURCES:
   Flutter:
@@ -14,8 +23,10 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/flutter_plugin_amap/ios"
 
 SPEC CHECKSUMS:
+  AMapFoundation-NO-IDFA: 68a24362b110b8e0a3677605d0fd36bdf521f2bb
+  AMapNavi-NO-IDFA: a5a8e68f5269614c8027948b6b6b28bdfd7b265c
   Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
-  flutter_plugin_amap: 7c2ae27b70210bf1587908cc9f4d985cc36ff37e
+  flutter_plugin_amap: fec9ab40811182e6ba25f23d95a7f32caa7766dd
 
 PODFILE CHECKSUM: c34e2287a9ccaa606aeceab922830efb9a6ff69a
 

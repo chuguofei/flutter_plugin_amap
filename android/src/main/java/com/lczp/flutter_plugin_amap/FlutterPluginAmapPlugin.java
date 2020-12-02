@@ -75,15 +75,10 @@ public class FlutterPluginAmapPlugin implements FlutterPlugin, ActivityAware, De
      */
     @Override
     public void onAttachedToActivity(@NonNull ActivityPluginBinding binding) {
-
-
-
-
         HiddenLifecycleReference reference = (HiddenLifecycleReference) binding.getLifecycle();
         lifecycle = reference.getLifecycle();
         lifecycle.addObserver(this);
-        pluginBinding.getPlatformViewRegistry().registerViewFactory("com.lczp.amap/plugin",
-                new AmapFactory(pluginBinding.getBinaryMessenger(), binding.getActivity(), lifecycle));
+        pluginBinding.getPlatformViewRegistry().registerViewFactory("com.lczp.amap/plugin",new AmapFactory(pluginBinding.getBinaryMessenger(), binding.getActivity(), lifecycle));
     }
 
     /**

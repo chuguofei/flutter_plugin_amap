@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>io.flutter.embedded_views_preview</key>
+	<true/>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
@@ -41,5 +43,11 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>App需要您的同意,才能访问位置</string>
+    <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+    <string>App需要您的同意,才能访问位置</string>
+    <key>amap_key</key>
+    <string>6eef9b376227f473b0e6e64a92a81047</string>
 </dict>
 </plist>

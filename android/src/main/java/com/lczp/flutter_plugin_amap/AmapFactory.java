@@ -36,9 +36,6 @@ class AmapFactory extends PlatformViewFactory {
 
     @Override
     public PlatformView create(final Context context, int viewId, Object args) {
-
-
-
         Gson g = new Gson();
         UnifiedMapOptions unifiedMapOptions = g.fromJson(args.toString(), UnifiedMapOptions.class);
         final AmapController amapController = new AmapController(messenger, activity, context, viewId, unifiedMapOptions);
