@@ -282,6 +282,7 @@ public class MethodCallHandleImpl implements MethodChannel.MethodCallHandler, Ev
                     public void onFailure(String throwable) {
                         Log.d("Tag", throwable);
                         mEventSink.success(throwable);
+                        result.error("500","绑定终端失败",throwable);
                     }
 
                     @Override
@@ -289,10 +290,7 @@ public class MethodCallHandleImpl implements MethodChannel.MethodCallHandler, Ev
                         AmapModel amapModel = new Gson().fromJson(response, AmapModel.class);
                         Log.d("Tag", response);
                         mEventSink.success("绑定终端"+response);
-                        if(amapModel.getErrCode() == 10000){
-                            // 返回终端id
-                            result.success(amapModel.getData().get("sid"));
-                        }
+                        result.success(new Gson().toJson(amapModel));
                     }
                 });
                 break;

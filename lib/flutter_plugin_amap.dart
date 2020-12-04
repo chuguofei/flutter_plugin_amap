@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:flutter/services.dart';
 export './export.dart';
@@ -37,20 +38,24 @@ class FlutterPluginAmap {
     await amap_nav_channel.invokeMethod("amap#trackQueryDistance");
   }
 
-  // 停止猎鹰服务
+  // 原生Toast
   static Future Toast(String str) async {
     await amap_nav_channel.invokeMethod("Toast", str);
   }
 
   // 绑定终端
-  static Future<String> amapTrackAdd(String terminal) async {
+  static Future<Map> amapTrackAdd(String terminal) async {
     Map params = {
       "key": "b09d2f642a0e006ddc87b16b14fcc85d",
       "sid": 217813,
       "name": terminal
     };
-    String result = await amap_nav_channel.invokeMethod("amap#track#add", params);
-    return result;
+    await amap_nav_channel.invokeMethod("amap#track#add", params);
+    Map result = json.decode(await amap_nav_channel.invokeMethod("amap#track#add", params)) as Map<String, dynamic>;
+    if(result["errCode"] != 0){
+      Toast(result["errdetail"]);
+    }
+    return result["errCode"] == 0 ? result["data"] : null;
   }
 
   // 查询终端

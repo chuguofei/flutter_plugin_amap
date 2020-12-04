@@ -29,7 +29,6 @@ class _MyHomeState extends State<MyHome> {
   TextEditingController terminalIdController;
   TextEditingController trackIdController;
   int trackId = null; // 轨迹id
-  int _terminalId = null; // 终端id
 
   @override
   void initState() {
@@ -152,10 +151,10 @@ class _MyHomeState extends State<MyHome> {
                                 return;
                               }
                               // 新增终端
-                              String terminalId =
-                                  await FlutterPluginAmap.amapTrackAdd(
-                                      terminalController.text.trim());
-                              _terminalId = int.parse(terminalId);
+                              Map result = await FlutterPluginAmap.amapTrackAdd(terminalController.text.trim());
+                              if(result != null){
+                                terminalIdController.text = result["sid"].toString();
+                              }
                               setState(() {});
                             },
                           );
@@ -174,8 +173,7 @@ class _MyHomeState extends State<MyHome> {
                         FlutterPluginAmap.Toast("终端Id不能为空");
                         return;
                       }
-                      String traceId = await FlutterPluginAmap.amapTraceAdd(
-                          terminalIdController.text.trim());
+                      String traceId = await FlutterPluginAmap.amapTraceAdd(terminalIdController.text.trim());
                       // 轨迹id
                       trackIdController.text = traceId;
                       setState(() {});
