@@ -50,7 +50,6 @@ class FlutterPluginAmap {
       "sid": 217813,
       "name": terminal
     };
-    await amap_nav_channel.invokeMethod("amap#track#add", params);
     Map result = json.decode(await amap_nav_channel.invokeMethod("amap#track#add", params)) as Map<String, dynamic>;
     if(result["errCode"] != 0){
       Toast(result["errdetail"]);
